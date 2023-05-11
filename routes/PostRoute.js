@@ -19,6 +19,7 @@ let upload = multer({storage})
 
 
 router.post("/", upload.single('myFile') , async(req, res)=>{
+    console.log("post called")
     const file = req.file
     console.log('file ', file)
     if(file){
@@ -30,7 +31,8 @@ router.post("/", upload.single('myFile') , async(req, res)=>{
         res.status(200).json("post created")
     } catch (error) {
         // res.status(500).json("server error")
-        res.status(500).json(error)
+        // res.status(500).json(error)
+        res.status(500).json("error on upload")
     }
  
 })
