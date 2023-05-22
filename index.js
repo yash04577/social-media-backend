@@ -34,7 +34,7 @@ app.use("/user", UserRoute);
 app.use("/post", PostRoute);
 app.use("/chat", chatRoute)
 app.use("/message", messageRoute)
-app.use("/upload", async(req, res)=>{
+app.post("/upload", async(req, res)=>{
     try {
         const file = req.file
         const response = await uploadImage(file);
