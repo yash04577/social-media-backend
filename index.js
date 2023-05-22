@@ -9,6 +9,7 @@ import chatRoute from "./routes/chatRoute.js"
 import messageRoute from "./routes/messageRoute.js"
 import { connectCloudinary } from "./config/cloudinary.js"
 import multer from "multer"
+import { uploadImage } from "./utils/uploadImageToCloudinary.js"
 const app = express();
 app.use(cors());
 
@@ -34,7 +35,8 @@ app.use("/user", UserRoute);
 app.use("/post", PostRoute);
 app.use("/chat", chatRoute)
 app.use("/message", messageRoute)
-app.post("/upload", async(req, res)=>{
+
+app.post("/upload", upload , async(req, res)=>{
     try {
         const file = req.file
         const response = await uploadImage(file);
